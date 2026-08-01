@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藏品图鉴展示</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+        body{background:#121212;color:#eee;padding:20px max(20px,5%);}
+        header{text-align:center;margin-bottom:40px;}
+        h1{font-size:28px;margin-bottom:10px;}
+        .tip{color:#aaa;margin-bottom:15px;}
+        .contact{font-size:18px;color:#42a5f5}
+        /* 商品卡片布局 */
+        .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;max-width:1400px;margin:0 auto;}
+        .card{background:#1e1e1e;border-radius:10px;overflow:hidden;border:1px solid #333;}
+        .card img{width:100%;height:240px;object-fit:cover;display:block;cursor:pointer;}
+        .info{padding:14px;}
+        .name{font-size:16px;margin-bottom:6px}
+        .desc{color:#aaa;font-size:14px;line-height:1.5}
+        /* 大图弹窗 */
+        .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.9);display:none;align-items:center;justify-content:center;z-index:999;}
+        .lightbox img{max-width:90%;max-height:90%;}
+        .lightbox.show{display:flex;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>藏品图鉴展示</h1>
+        <p class="tip">页面仅作素材预览，感兴趣请联系下方渠道咨询</p>
+        <p class="contact">QQ：2826173519</p>
+    </header>
+
+    <div class="grid">
+        <!-- ==========复制下面整块新增更多账号卡片========== -->
+        <div class="card">
+            <img src="sheqvsuo.jpg" onclick="openImg(this.src)">
+            <div class="info">
+                <div class="name">蝴蝶刀 | 皮肤套装</div>
+                <div class="desc">游玩时长：5h | 饰品截图如图</div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="dansuo.jpg" onclick="openImg(this.src)">
+            <div class="info">
+                <div class="name">M9刺刀 全套皮肤</div>
+                <div class="desc">库存充足，原图实拍</div>
+            </div>
+        </div>
+        <!-- 新增卡片直接复制上面代码，修改图片路径、文字 -->
+    </div>
+
+    <!-- 点击图片放大弹窗 -->
+    <div class="lightbox" onclick="this.classList.remove('show')">
+        <img id="preview">
+    </div>
+    <script>
+        function openImg(src){
+            document.querySelector('.lightbox').classList.add('show');
+            document.getElementById('preview').src = src;
+        }
+    </script>
+</body>
+</html>
